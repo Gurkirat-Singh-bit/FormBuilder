@@ -1,36 +1,28 @@
 version: '3.8'
 services:
-  mongo:
-    image: mongo:6.0
-    container_name: formbuilder-mongo
-    restart: always
-    ports:
-      - "27017:27017"
-    volumes:
-      - mongo-data:/data/db
-
   backend:
     build: ./backend
-    container_name: formbuilder-backend
-    restart: always
-    env_file:
-      - ./backend/.env
+    ports:
+      - "5501:5501"
     environment:
       - PORT=5501
       - MONGO_URI=mongodb://mongo:27017/formbuilderDB
     depends_on:
       - mongo
-    ports:
-      - "5501:5501"
 
   frontend:
     build: ./app
-    container_name: formbuilder-frontend
-    restart: always
     ports:
       - "5173:5173"
-    depends_on:
-      - backend
+    environment:
+      - PORT=5173
+
+  mongo:
+    image: mongo:6.0
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
 
 volumes:
   mongo-data:
