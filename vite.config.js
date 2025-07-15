@@ -15,4 +15,9 @@ export default defineConfig({
     }),
     tsconfigPaths(),
   ],
+  /*server: {
+    host: true, // 👈 So Vite binds to 0.0.0.0 inside Docker
+    port: 5173,
+    cors: true,
+  },*/
 });

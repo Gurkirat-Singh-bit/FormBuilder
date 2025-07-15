@@ -13,7 +13,7 @@ async function saveFormToMongo(formObject) {
   if (!user) return;
 
   try {
-    await fetch("http://localhost:5000/api/forms/create", {
+    await fetch(`${import.meta.env.VITE_API_BASE_URL}/forms/create`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

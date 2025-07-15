@@ -25,7 +25,7 @@ export default function Register() {
        await syncUserDataToMongo(user);
 
       // ✅ Save user to backend (MongoDB)
-      await fetch("http://localhost:5000/api/auth/save-user", {
+      await fetch(`${import.meta.env.VITE_API_BASE_URL}/auth/save-user`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

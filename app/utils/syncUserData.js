@@ -8,17 +8,17 @@ export async function syncUserDataToMongo(user) {
   );
 
   await Promise.all([
-    fetch("http://localhost:5000/api/forms/save", {
+    fetch(`${import.meta.env.VITE_API_BASE_URL}/forms/save `, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ uid, forms }),
     }),
-    fetch("http://localhost:5000/api/responses/save", {
+    fetch(`${import.meta.env.VITE_API_BASE_URL}/responses/save`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ uid, responses }),
     }),
-    fetch("http://localhost:5000/api/templates/save", {
+    fetch(`${import.meta.env.VITE_API_BASE_URL}/templates/save`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ uid, templates }),
